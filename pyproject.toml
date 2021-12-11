@@ -1,0 +1,32 @@
+[tool.isort]
+multi_line_output = 3
+profile = "black"
+
+[tool.pytest.ini_options]
+addopts = "--cov=app --cov-report html --cov-fail-under 0"
+minversion = "6.2.1"
+testpaths = "tests"
+
+[tool.flakehell]
+exclude = ["README.md"]
+format = "grouped"
+max-complexity = 10
+max_line_length = 88
+show_source = true
+
+[tool.flakehell.plugins]
+flake8-bandit = ["+*"]
+flake8-bugbear = ["+*"]
+flake8-builtins = ["+*"]
+flake8-comprehensions = ["+*"]
+flake8-eradicate = ["+*"]
+flake8-isort = ["+*"]
+flake8-mutable = ["+*"]
+flake8-pytest-style = ["+*"]
+mccabe = ["+*"]
+pycodestyle = ["+*"]
+pyflakes = ["+*"]
+
+[tool.flakehell.exceptions."tests/"]
+# -S101 removes assert warnings on tests
+flake8-bandit = ["+*", "-S101"]
